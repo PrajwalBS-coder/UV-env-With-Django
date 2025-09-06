@@ -12,19 +12,21 @@ Make sure you have the following installed on your system:
 - [Git](https://git-scm.com/downloads) (optional, if using version control)
 
 ---
+
+
+## 🔹 1. Clone the Project
+```bash
+git clone https://github.com/PrajwalBS-coder/UV-env-With-Django.git
+cd your-django-project
+```
+
+---
 ## Here we're using uv As Virtul env
 
 https://github.com/astral-sh/uv/releases
 
 download from above url
 
-## 🔹 1. Clone the Project
-```bash
-git clone https://github.com/your-username/your-django-project.git
-cd your-django-project
-```
-
----
 
 ## 🔹 2. Create & Activate Virtual Environment
 ```bash
