@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'oauth2_provider',# For Oauth2',
     'User',
+    "silk",
     ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'oauth2_provider.middleware.OAuth2TokenMiddleware',
+    "silk.middleware.SilkyMiddleware",
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -148,3 +150,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# #Sentry
+# import sentry_sdk
+
+# sentry_sdk.init(
+#     dsn="https://your-sentry-dsn@o123456.ingest.sentry.io/",
+#     send_default_pii=True,  # captures user IP, headers, etc.
+# )
