@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+from common.functions.find_urls import find_fe_url,find_be_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'oauth2_provider',# For Oauth2',
     'User',
-    "silk",
+    'silk',
+    'common',
     ]
 
 MIDDLEWARE = [
@@ -160,3 +162,32 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     dsn="https://your-sentry-dsn@o123456.ingest.sentry.io/",
 #     send_default_pii=True,  # captures user IP, headers, etc.
 # )
+
+
+# JAZZMIN CONFIGURATION
+CURRENT_INSTANCE_SOURCE = config('ENVIRONMENT_NAME', default='localhost')
+
+
+name=f"MYAPP"
+JAZZMIN_SETTINGS = {
+    "site_brand": name,
+    "site_title": name,
+    "site_logo": "Fwx_logo_blue.svg",
+    "site_header": f"{name} Admin",
+    "welcome_sign": f"Welcome to the {name} Admin",
+    "copyright": f"{name} Ltd ",
+    "search_model":[
+                    "documents.RubricsQuestions",
+                    "report_analysis.AnalysisReportQuestions",
+                    "survey.SurveyQuestions",
+                    "web_research.WebResearchQuestions",
+                    ],
+    "show_ui_builder" :True,
+    "topmenu_links": [
+        {"name": "SILK LOG", "url": find_fe_url(CURRENT_INSTANCE_SOURCE), "new_window": True},
+        {"name": "Backend URL", "url": find_be_url(CURRENT_INSTANCE_SOURCE), "new_window": True},
+    ],
+    "usermenu_links":[
+        {"name":"","url":"","new_window":True}
+    ]
+}
