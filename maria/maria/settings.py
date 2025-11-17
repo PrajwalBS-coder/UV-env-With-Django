@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from decouple import config
 from common.functions.find_urls import find_fe_url,find_be_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -72,7 +73,7 @@ ROOT_URLCONF = 'maria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,7 +147,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",      # Only if you have a /static folder in your project root
+]
+
+STATIC_ROOT = BASE_DIR / "staticfiles"   # For collectstatic (prod)
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -172,16 +181,10 @@ name=f"MYAPP"
 JAZZMIN_SETTINGS = {
     "site_brand": name,
     "site_title": name,
-    "site_logo": "Fwx_logo_blue.svg",
+    "site_logo": "images/logo.png",
     "site_header": f"{name} Admin",
     "welcome_sign": f"Welcome to the {name} Admin",
     "copyright": f"{name} Ltd ",
-    "search_model":[
-                    "documents.RubricsQuestions",
-                    "report_analysis.AnalysisReportQuestions",
-                    "survey.SurveyQuestions",
-                    "web_research.WebResearchQuestions",
-                    ],
     "show_ui_builder" :True,
     "topmenu_links": [
         {"name": "SILK LOG", "url": find_fe_url(CURRENT_INSTANCE_SOURCE), "new_window": True},
