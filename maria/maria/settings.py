@@ -181,7 +181,7 @@ name=f"MYAPP"
 JAZZMIN_SETTINGS = {
     "site_brand": name,
     "site_title": name,
-    "site_logo": "Information Technology.png",
+    "site_logo": "logos/Information Technology.png",
     "site_header": f"{name} Admin",
     "welcome_sign": f"Welcome to the {name} Admin",
     "copyright": f"{name} Ltd ",
@@ -194,3 +194,8 @@ JAZZMIN_SETTINGS = {
         {"name":"","url":"","new_window":True}
     ]
 }
+
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
