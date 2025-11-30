@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'User',
     'silk',
     'common',
+    'django_celery_beat',      # For Automationg and managing background/async taks
+    'django_celery_results',   # For storing results
     ]
 
 MIDDLEWARE = [
@@ -199,3 +201,27 @@ JAZZMIN_SETTINGS = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+
+
+CELERY_TIMEZONE = 'America/New_York'
+
+
+# REDIS CACHE
+REDIS_DB_URL=config("CELERY_BROKER_URL")
+
+
+# CELERY SETTINGS
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
+CELERY_RESULT_EXPIRES = 60 * 60 * 24  # Keep results for 1 day (default)
+ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_RESULT_EXTENDED = True
+broker_connection_retry_on_startup = True
+
+# CELERY BEAT SETTINGS
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
