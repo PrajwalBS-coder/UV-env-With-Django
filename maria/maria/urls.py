@@ -22,7 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    path("silk/", include("silk.urls", namespace="silk"))
+    path("silk/", include("silk.urls", namespace="silk")),
+    path('', include('User.apis.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
