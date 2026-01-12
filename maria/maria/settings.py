@@ -202,9 +202,6 @@ JAZZMIN_SETTINGS = {
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
-
-
 CELERY_TIMEZONE = 'America/New_York'
 
 
@@ -225,3 +222,17 @@ broker_connection_retry_on_startup = True
 
 # CELERY BEAT SETTINGS
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+# Open Weather API
+OPEN_WEATHER_API_KEY = config('open_weather_api_key')
+
+#Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+RECIPETENT_EMAIL = config('RECIEVER_EMAIL')
+

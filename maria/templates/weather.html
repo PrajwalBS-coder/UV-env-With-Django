@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Weather Update</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, Helvetica, sans-serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+      <td align="center" style="padding:20px;">
+        
+        <!-- Main Container -->
+        <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+          
+          <!-- Header -->
+          <tr>
+            <td style="background:#1e88e5; padding:20px; border-radius:8px 8px 0 0; color:#ffffff; text-align:center;">
+              <h2 style="margin:0;">🌤 Weather Update</h2>
+              <p style="margin:5px 0 0; font-size:14px;">
+                {{city}} • {{date_time}}
+              </p>
+            </td>
+          </tr>
+
+          <!-- Content -->
+          <tr>
+            <td style="padding:25px; color:#333333;">
+              <p style="margin-top:0;">Hello {{name}},</p>
+
+              <p>Here is the latest weather report for <strong>{{city}}</strong>:</p>
+
+              <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+                <tr>
+                  <td style="border-bottom:1px solid #eeeeee;">🌡 Temperature</td>
+                  <td style="border-bottom:1px solid #eeeeee; text-align:right;">{{temperature}}°C</td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #eeeeee;">🤔 Feels Like</td>
+                  <td style="border-bottom:1px solid #eeeeee; text-align:right;">{{feels_like}}°C</td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #eeeeee;">☁ Condition</td>
+                  <td style="border-bottom:1px solid #eeeeee; text-align:right;">{{weather_condition}}</td>
+                </tr>
+                <tr>
+                  <td style="border-bottom:1px solid #eeeeee;">💧 Humidity</td>
+                  <td style="border-bottom:1px solid #eeeeee; text-align:right;">{{humidity}}%</td>
+                </tr>
+                <tr>
+                  <td>🌬 Wind Speed</td>
+                  <td style="text-align:right;">{{wind_speed}} km/h</td>
+                </tr>
+              </table>
+
+              <p style="margin-top:20px;">
+                🌅 Sunrise: {{sunrise_time}} <br />
+                🌇 Sunset: {{sunset_time}}
+              </p>
+
+              <p style="margin-bottom:0;">
+                Stay prepared and have a great day!
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background:#f1f3f4; padding:15px; text-align:center; font-size:12px; color:#777777; border-radius:0 0 8px 8px;">
+              Weather.com <br />
+              <a href="mailto:{{support_email}}" style="color:#1e88e5; text-decoration:none;">
+                contactamin@weather.com
+              </a>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
