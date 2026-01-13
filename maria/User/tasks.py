@@ -8,6 +8,8 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils import timezone
 
+time_literal="%I:%M %p"
+
 
 @app.task(name="send_email_task", bind=True)
 def send_email_task(self):
@@ -33,8 +35,8 @@ def send_email_task(self):
     print(data['weather'][0]['main'])
     print(data['main']['humidity'])
     print(data['wind']['speed'])
-    print(sunrise_time.strftime("%I:%M %p"))
-    print(sunset_time.strftime("%I:%M %p"))
+    print(sunrise_time.strftime(time_literal))
+    print(sunset_time.strftime(time_literal))
 
 
     subject = "Weather Update"
@@ -43,13 +45,11 @@ def send_email_task(self):
                             'temperature': temp, 
                                 'weather_condition': condition, 
                                 'city': CITY, 
-                                'sunrise_time': sunrise_time.strftime("%I:%M %p"), 
-                                'sunset_time': sunset_time.strftime("%I:%M %p"),
-                                'city': CITY,
+                                'sunrise_time': sunrise_time.strftime(time_literal), 
+                                'sunset_time': sunset_time.strftime(time_literal),
                                 'feels_like': data['main']['feels_like'],
                                 'humidity': data['main']['humidity'],
                                 'wind_speed': data['wind']['speed'],
-                                'humidity': data['main']['humidity'],
                                 'date_time': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                                 }
                                 )
