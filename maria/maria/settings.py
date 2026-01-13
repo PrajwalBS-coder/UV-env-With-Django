@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*6i&pwt90qvimj$vt5_l_p6%gb8+sn46@ocp1@y+n%%9%h+x#6'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -90,15 +90,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'maria.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',   # use mysql backend (works for MariaDB too)
@@ -166,20 +157,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-# #Sentry
-# import sentry_sdk
-
-# sentry_sdk.init(
-#     dsn="https://your-sentry-dsn@o123456.ingest.sentry.io/",
-#     send_default_pii=True,  # captures user IP, headers, etc.
-# )
-
-
 # JAZZMIN CONFIGURATION
 CURRENT_INSTANCE_SOURCE = config('ENVIRONMENT_NAME', default='localhost')
 
 
-name=f"MYAPP"
+name="MYAPP"
 JAZZMIN_SETTINGS = {
     "site_brand": name,
     "site_title": name,
